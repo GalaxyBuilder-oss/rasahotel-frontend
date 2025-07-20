@@ -14,7 +14,7 @@ export default function Registration() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
-  const redirectUrl = "/login";
+  let redirectUrl = "/login";
 
   const handleInputChange = (e) => {
     setRegistration({ ...registration, [e.target.name]: e.target.value });
@@ -37,6 +37,7 @@ export default function Registration() {
     } catch (error) {
       setSuccessMessage("");
       setErrorMessage(`Registration error : ${error.message}`);
+      redirectUrl = "/register";
     }
     setTimeout(() => {
       setErrorMessage("");

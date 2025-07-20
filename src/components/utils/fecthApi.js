@@ -361,14 +361,16 @@ export async function saveBooking(roomId, data) {
 
 export async function checkout(confirmationCode) {
   try {
+    console.log(confirmationCode);
     const response = await api.post(
-      "/booking/payment?confirmationCode=" + confirmationCode,
+      "/booking/payment/" + confirmationCode,{},
       {
         headers: getHeader(),
       }
     );
     return response.data.data;
   } catch (error) {
+    console.log(error);
     throw new Error("Error fetching transaction type");
   }
 }
